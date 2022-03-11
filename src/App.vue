@@ -1,6 +1,11 @@
 <script>
   import MainHeaderVue from "./components/layouts/MainHeader.vue";
   export default {
+    data(){
+      return{
+        links: ["https://google.com","https://github.com/loganbw"]
+      }
+    },
     components: {
       MainHeaderVue,
     },
@@ -9,7 +14,7 @@
 
 <template>
   <section>
-    <MainHeaderVue title="Website Name" />
+    <MainHeaderVue title="Website Name" :links="links" linkName="link" />
   </section>
 </template>
 
