@@ -1,21 +1,27 @@
 <script>
   import MainHeaderVue from "./components/layouts/MainHeader.vue";
+import BaseButton from "./components/UI/BaseButton.vue";
   export default {
     data(){
       return{
-        links: ["https://google.com","https://github.com/loganbw"]
+        links: [{url:"https://github.com/loganbw", icon: '<i class="fa-brands fa-github"></i>'
+        },{url:"https://linkedin.com/in/loganweathersby", icon: '<i class="fa-brands fa-linkedin"></i>'}]
       }
     },
     components: {
-      MainHeaderVue,
-    },
+    MainHeaderVue,
+    BaseButton
+},
   };
 </script>
 
 <template>
   <section>
-    <MainHeaderVue title="Website Name" :links="links" linkName="link" />
+    <MainHeaderVue title="Website Name" :links="links" linkName="link"  />
   </section>
+  <div>
+      <BaseButton routerLink="/about" title="Login" />
+  </div>
 </template>
 
 <style>
