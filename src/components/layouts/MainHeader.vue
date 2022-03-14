@@ -3,6 +3,7 @@
     <div>
       <h1>
         {{ title }}
+       
       </h1>
     </div>
     <div class="navMenu">
@@ -17,8 +18,10 @@
   </header>
 </template>
 <script>
+import BaseButtonVue from "../UI/BaseButton.vue";
   export default {
     props: ["title", "links", "linkName"],
+    components:{BaseButtonVue}
   };
 </script>
 <style scoped>

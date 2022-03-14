@@ -1,27 +1,34 @@
 <script>
   import MainHeaderVue from "./components/layouts/MainHeader.vue";
-import BaseButton from "./components/UI/BaseButton.vue";
+  import BaseButton from "./components/UI/BaseButton.vue";
+
   export default {
-    data(){
-      return{
-        links: [{url:"https://github.com/loganbw", icon: '<i class="fa-brands fa-github"></i>'
-        },{url:"https://linkedin.com/in/loganweathersby", icon: '<i class="fa-brands fa-linkedin"></i>'}]
-      }
+    data() {
+      return {
+        links: [
+          { url: "https://github.com/loganbw", icon: '<i class="fa-brands fa-github"></i>' },
+          {
+            url: "https://linkedin.com/in/loganweathersby",
+            icon: '<i class="fa-brands fa-linkedin"></i>',
+          },
+        ],
+      };
     },
     components: {
-    MainHeaderVue,
-    BaseButton
-},
+      MainHeaderVue,
+      BaseButton,
+    },
   };
 </script>
 
 <template>
   <section>
-    <MainHeaderVue title="Website Name" :links="links" linkName="link"  />
+    <MainHeaderVue title="Website Name" :links="links" linkName="link" />
+    <div>
+      <BaseButton routerLinkTo="/home" title="Login" />
+    </div>
   </section>
-  <div>
-      <BaseButton routerLink="/about" title="Login" />
-  </div>
+  <router-view></router-view>
 </template>
 
 <style>
