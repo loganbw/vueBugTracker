@@ -25,7 +25,8 @@
   <section>
     <MainHeaderVue title="Website Name" :links="links" linkName="link" />
     <div>
-      <BaseButton routerLinkTo="/home" title="Login" />
+      <BaseButton  title="Login" />
+      
     </div>
   </section>
   <router-view></router-view>

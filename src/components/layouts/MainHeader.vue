@@ -1,10 +1,11 @@
 <template>
   <header>
     <div>
-      <h1>
-        {{ title }}
-       
-      </h1>
+      <router-link to="/">
+        <h1>
+          {{ title }}
+        </h1>
+      </router-link>
     </div>
     <div class="navMenu">
       <section>
@@ -18,10 +19,10 @@
   </header>
 </template>
 <script>
-import BaseButtonVue from "../UI/BaseButton.vue";
+  import BaseButtonVue from "../UI/BaseButton.vue";
   export default {
     props: ["title", "links", "linkName"],
-    components:{BaseButtonVue}
+    components: { BaseButtonVue },
   };
 </script>
 <style scoped>
@@ -38,7 +39,7 @@ import BaseButtonVue from "../UI/BaseButton.vue";
   }
   a {
     text-decoration: none;
-    color: #748cab;
+    color: #f0ebd8;
     margin: 0.5rem;
   }
   .navMenu {

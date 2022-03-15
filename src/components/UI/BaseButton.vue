@@ -1,15 +1,12 @@
 <template>
   <div>
-    <RouterLink class="home" :to="routerLinkTo">{{title}}</RouterLink>
+    <Button class="home" >{{title}}</Button>
   </div>
   
 </template>
 <script>
-import { RouterLink, RouterView } from 'vue-router'
-
   export default {
-    props: ["title", "routerLinkTo"],
-    component:{RouterLink, RouterView},
+    props: ["title"],
     data() {
       return {};
     },
