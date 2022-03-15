@@ -1,7 +1,7 @@
 <template>
-  <div>
+  
     <button class="button-3" role="button" >{{title}}</button>
-  </div>
+  
   
 </template>
 <script>
@@ -13,9 +13,9 @@
   };
 </script>
 <style scoped>
-  div {
+  button {
     display: flex;
-    margin: 5%;
+    
     justify-content: center;
   }
   .home {

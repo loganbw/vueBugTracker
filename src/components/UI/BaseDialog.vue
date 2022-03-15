@@ -2,23 +2,38 @@
   <div class="background" @click="$emit('close')"></div>
   <div>
     <dialog open>
-      <div>
+      <div class="spacer">
         <h3>{{ title }}</h3>
       </div>
       <div>
-        <slot></slot>
-        <base-button @click="$emit('close')" value="submit"></base-button>
+        <slot name="signup"></slot>
       </div>
       <div>
-          <slot name="signup"></slot>
+        <slot></slot>
+        <div class="spacer"></div>
+        <div class="submitButton">
+          <base-button
+            class="loginButton"
+            @click="$emit('close')"
+            :click="test()"
+            value="submit"
+            :title="submitButton"
+          ></base-button>
+        </div>
       </div>
+      <div class="spacer"></div>
     </dialog>
   </div>
 </template>
 <script>
   export default {
-    props: ["title"],
+    props: ["title", "submitButton"],
     emits: ["close"],
+    methods:{
+        test(){
+            console.log("test");
+        }
+    }
   };
 </script>
 <style scoped>
@@ -31,7 +46,15 @@
     background-color: rgba(0, 0, 0, 0.75);
     z-index: 10;
   }
-
+.submitButton{
+    display: flex;
+    justify-content: center;
+}
+  .spacer {
+    padding: 1rem;
+        justify-content: center;
+    display: flex;
+  }
   dialog {
     position: fixed;
     top: 20vh;
@@ -70,8 +93,9 @@
 
   @media (min-width: 768px) {
     dialog {
-      left: calc(50% - 20rem);
-      width: 40rem;
+      left: calc(50% - 10rem);
+      width: 20rem;
     }
   }
+ 
 </style>
