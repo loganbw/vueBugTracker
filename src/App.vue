@@ -16,7 +16,6 @@
     },
     components: {
       MainHeaderVue,
-      BaseButton,
     },
   };
 </script>
@@ -24,12 +23,10 @@
 <template>
   <section>
     <MainHeaderVue title="Website Name" :links="links" linkName="link" />
-    <div>
-      <BaseButton  title="Login" />
-      
-    </div>
+    
   </section>
   <router-view></router-view>
+  
 </template>
 
 <style>
