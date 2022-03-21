@@ -1,8 +1,5 @@
 <template>
-  
-    <button class="button-3" role="button" >{{title}}</button>
-  
-  
+  <button class="button-3" role="button">{{ title }}</button>
 </template>
 <script>
   export default {
@@ -15,7 +12,7 @@
 <style scoped>
   button {
     display: flex;
-    
+
     justify-content: center;
   }
   .home {
@@ -30,46 +27,45 @@
     outline: none;
   }
 
-.button-3 {
-  width: 15%;
-  appearance: none;
-  background-color: #49779e;
-  border: 1px solid rgba(27, 31, 35, .15);
-  border-radius: 6px;
-  box-shadow: rgba(27, 31, 35, .1) 0 1px 0;
-  box-sizing: border-box;
-  color: #f0ebd8;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 600;
-  line-height: 20px;
-  padding: 6px 16px;
-}
+  .button-3 {
+    width: 15%;
+    appearance: none;
+    background-color: #49779e;
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    border-radius: 6px;
+    box-shadow: rgba(27, 31, 35, 0.1) 0 1px 0;
+    box-sizing: border-box;
+    color: #f0ebd8;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
+    padding: 6px 16px;
+  }
 
-.button-3:focus:not(:focus-visible):not(.focus-visible) {
-  box-shadow: none;
-  outline: none;
-}
+  .button-3:focus:not(:focus-visible):not(.focus-visible) {
+    box-shadow: none;
+    outline: none;
+  }
 
-.button-3:hover {
-  background-color: #5965d1;
-}
+  .button-3:hover {
+    background-color: #5965d1;
+  }
 
-.button-3:focus {
-  box-shadow: rgba(46, 164, 79, .4) 0 0 0 3px;
-  outline: none;
-}
+  .button-3:focus {
+    box-shadow: rgba(46, 164, 79, 0.4) 0 0 0 3px;
+    outline: none;
+  }
 
-.button-3:disabled {
-  background-color: #bedfe4;
-  border-color: rgba(27, 31, 35, .1);
-  color: rgba(255, 255, 255, .8);
-  cursor: default;
-}
+  .button-3:disabled {
+    background-color: #bedfe4;
+    border-color: rgba(27, 31, 35, 0.1);
+    color: rgba(255, 255, 255, 0.8);
+    cursor: default;
+  }
 
-.button-3:active {
-  background-color: #bedfe4;
-  box-shadow: rgba(20, 70, 32, .2) 0 1px 0 inset;
-}
-  
+  .button-3:active {
+    background-color: #bedfe4;
+    box-shadow: rgba(20, 70, 32, 0.2) 0 1px 0 inset;
+  }
 </style>

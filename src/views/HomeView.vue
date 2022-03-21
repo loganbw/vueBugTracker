@@ -29,6 +29,9 @@
           <input id="mail" type="email" />
           <label for="password">Password</label>
           <input type="password" id="password" />
+          <div>
+            <BaseButton class="test" title="login" />
+          </div>
         </form>
       </div>
 
@@ -55,6 +58,11 @@
     float: right;
     border-left: outset;
     border-color: #3d5a80;
+  }
+  .test {
+    width: 25%;
+    display: flex;
+    justify-content: center;
   }
   .form {
     margin: 5%;

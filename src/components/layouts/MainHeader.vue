@@ -28,7 +28,6 @@
 <style scoped>
   header {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-    padding: 1rem;
     background-color: #1d2d44;
     color: white;
     display: flex;
@@ -37,12 +36,16 @@
   section {
     float: right;
   }
+  div{
+    margin:1%;
+  }
   a {
     text-decoration: none;
     color: #f0ebd8;
-    margin: 0.5rem;
+    margin: 1rem;
   }
   .navMenu {
-    margin-left: 70%;
+    margin-left: 80%;
+
   }
 </style>
