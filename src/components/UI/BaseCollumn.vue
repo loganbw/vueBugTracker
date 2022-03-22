@@ -2,29 +2,40 @@
   <div v-if="cardModle">
     <div></div>
     <base-dialog @close="closeDialog()">
-      <div class="cardForm">
-        <label for="title"> Bug Issue</label>
-        <input id="title" type="text" />
-        <label for="issue">description</label>
-        <textarea name="issue" id="issue" cols="30" rows="5"></textarea>
-        <label id="tag">Tags</label>
-        <ul>
-          <li v-for="tag in tags">
-            <input id="tag" type="radio" name="tag" :value="tag.name" />
-            <label class="tagLabel" for="red">{{ tag.name }}</label>
-          </li>
-        </ul>
-      </div>
+      <form type="submit" @submit.prevent>
+        <div class="cardForm">
+          <label for="name"> Bug Issue</label>
+          <input v-model="cardName" id="title" type="text" />
+          <label for="issue">description</label>
+          <textarea v-model="cardDesc" name="issue" id="issue" cols="30" rows="5"></textarea>
+          <label id="tag">Tags</label>
+          <ul>
+            <li v-for="tag in tags">
+              <input v-model="cardTag" id="tag" type="radio" name="tag" :value="tag.name" />
+              <label class="tagLabel" for="red">{{ tag.name }}</label>
+            </li>
+          </ul>
+        </div>
+        <div class="spacer"></div>
+        <div class="submitButton">
+          <base-button
+            class="loginButton"
+            @click="pushCard(currentCol, numberOfCards, cardName, cardDesc, cardTag)"
+            value="submit"
+            title="Add Issue"
+          ></base-button>
+        </div>
+      </form>
     </base-dialog>
   </div>
   <div :class="overflowFlag ? 'overflowFlag' : 'colContain'">
-    <div v-for="col in numberOfCollumns" :id="col" class="contain" draggable="true">
-      <div class="title">{{ col.id }}</div>
-      <div draggable="true" v-for="card in cards" :id="card">
-        <base-card ></base-card>
+    <div v-for="col in collumns" :id="col" class="contain" draggable="true">
+      <div class="title">Title</div>
+      <div draggable="true" v-for="card in collumns[col.id].cards" :id="numberOfCards">
+        <base-card :cardName=" card.name" :cardDesc="card.description"></base-card>
       </div>
       <div class="addCard">
-        <button class="addCardIcon" @click="addCard">
+        <button class="addCardIcon" @click="addCard(col.id)">
           <i class="iconStyle fa-regular fa-plus fa-2xl"></i>
         </button>
       </div>
@@ -43,12 +54,20 @@
   export default {
     data() {
       return {
-        numberOfCollumns: 1,
+        numberOfCollumns: 0,
         numberOfCards: 0,
         overflowFlag: false,
         cardModle: false,
+        currentCol: 0,
         collumnId: 0,
-        cards: [],
+        collumns: [
+          {
+            id: 0,
+            collumnName: "",
+            cards: [],
+          },
+        ],
+        
         tags: [
           { id: 1, name: "red", description: "" },
           { id: 2, name: "blue", description: "" },
@@ -64,15 +83,26 @@
       },
       addCollumn() {
         this.numberOfCollumns++;
-        console.log(this.numberOfCollumns);
+        this.collumns.push({ id: this.numberOfCollumns, cards: [] });
+        console.log(this.collumns);
       },
-      addCard() {
+      addCard(colId) {
         this.cardModle = true;
         this.numberOfCards++;
-        this.cards.push();
+        this.currentCol = colId;
       },
       logItem(item) {
         console.log(item);
+      },
+      pushCard(colId, cardId, cardName, cardDesc, cardTag) {
+        console.log(this.collumns);
+        this.collumns[colId].cards.push({
+          id: cardId,
+          name: cardName,
+          description: cardDesc,
+          tags: [cardTag],
+        });
+        this.closeDialog();
       },
     },
     computed: {
@@ -114,6 +144,13 @@
     justify-content: space-evenly;
     align-items: stretch;
     align-content: space-around;
+  }
+  .submitButton {
+    display: flex;
+    justify-content: center;
+  }
+  .loginButton {
+    width: 35%;
   }
   .addButton {
     margin: 5%;
