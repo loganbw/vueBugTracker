@@ -1,10 +1,12 @@
 <template lang="">
     <main>
-        <h1>TEST</h1>
+        <BaseSideBar />
     </main>
 </template>
 <script>
+import BaseSideBarVue from "../components/UI/BaseSideBar.vue";
 export default {
+    components: [BaseSideBarVue],
     methods: {
         
     },

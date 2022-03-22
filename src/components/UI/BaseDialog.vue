@@ -9,17 +9,19 @@
         <slot name="signup"></slot>
       </div>
       <div>
-        <slot></slot>
-        <div class="spacer"></div>
-        <div class="submitButton">
-          <base-button
-            class="loginButton"
-            @click="$emit('close')"
-            :click="test()"
-            value="submit"
-            :title="submitButton"
-          ></base-button>
-        </div>
+        <form type="submit">
+          <slot></slot>
+          <div class="spacer"></div>
+          <div class="submitButton">
+            <base-button
+              class="loginButton"
+              @click="$emit('close')"
+              :click="test()"
+              value="submit"
+              :title="submitButton"
+            ></base-button>
+          </div>
+        </form>
       </div>
       <div class="spacer"></div>
     </dialog>
@@ -29,11 +31,11 @@
   export default {
     props: ["title", "submitButton"],
     emits: ["close"],
-    methods:{
-        test(){
-            console.log("test");
-        }
-    }
+    methods: {
+      test() {
+        console.log("test");
+      },
+    },
   };
 </script>
 <style scoped>
@@ -46,13 +48,13 @@
     background-color: rgba(0, 0, 0, 0.75);
     z-index: 10;
   }
-.submitButton{
+  .submitButton {
     display: flex;
     justify-content: center;
-}
+  }
   .spacer {
     padding: 1rem;
-        justify-content: center;
+    justify-content: center;
     display: flex;
   }
   dialog {
@@ -97,5 +99,4 @@
       width: 20rem;
     }
   }
- 
 </style>
