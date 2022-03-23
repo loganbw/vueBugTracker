@@ -30,8 +30,8 @@
   </div>
   <div :class="overflowFlag ? 'overflowFlag' : 'colContain'">
     <div v-for="col in collumns" :id="col" class="contain" draggable="true">
-      <div @click="changeNameFun" class="title">
-        <div v-if="changeName && col.id == col.id">
+      <div @click="changeNameFun(col)" class="title">
+        <div v-if="changeName && currentCol == col.id">
           <form @submit.prevent="onSubmit, closeChangeNameFun" type="submit">
             <input @input="test($event)" v-model="collumns[col.id].collumnName" />
           </form>
@@ -78,6 +78,7 @@
         cardModle: false,
         currentCol: 0,
         changeName: false,
+        currentCol: 0,
         collumnId: 0,
         collumns: [
           {
@@ -106,10 +107,15 @@
       closeChangeNameFun() {
         this.changeName = false;
       },
-      changeNameFun(colId) {
+      changeNameFun(col) {
         console.log("Name div");
+        console.log(col);
+        for (let index = 0; index < this.collumns.length; index++) {
 
-        this.changeName = true;
+          if (index == col.id) {
+              this.currentCol = index;
+              return this.changeName = true};
+        }
       },
       openCard() {
         this.cardIsOpen = true;
