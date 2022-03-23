@@ -30,10 +30,11 @@
   </div>
   <div :class="overflowFlag ? 'overflowFlag' : 'colContain'">
     <div v-for="col in collumns" :id="col" class="contain" draggable="true">
-      <div @click="changeNameFun(col)" class="title">
+      <div @click="changeNameFun(col)   " class="title">
         <div v-if="changeName && currentCol == col.id">
-          <form @submit.prevent="onSubmit, closeChangeNameFun" type="submit">
-            <input @input="test($event)" v-model="collumns[col.id].collumnName" />
+          <form type="submit" @submit.prevent="closeChangeNameFun" >
+            <input :load="focusColInput()"  ref="colInput" @input="test($event)" v-model="collumns[col.id].collumnName" focus />
+            <button style="display: none;" type="submit" value="submit"></button>
           </form>
         </div>
         <div v-else>
@@ -95,26 +96,34 @@
         ],
       };
     },
+    watch:
+    {
+        changeName(){
+            this.focusColInput()
+        }
+    },
     props: ["title"],
     components: [BaseCard],
     methods: {
+        focusColInput(){
+            console.log(this.$refs.colInput)
+            
+        },
       test(event) {
         let t = "";
-        console.log(event);
-        t.concat(event);
-        console.log(t + " this <==");
+    
       },
       closeChangeNameFun() {
+        console.log("CLOSE");
         this.changeName = false;
       },
       changeNameFun(col) {
-        console.log("Name div");
-        console.log(col);
+       
         for (let index = 0; index < this.collumns.length; index++) {
-
           if (index == col.id) {
-              this.currentCol = index;
-              return this.changeName = true};
+            this.currentCol = index;
+            return (this.changeName = true);
+          }
         }
       },
       openCard() {
