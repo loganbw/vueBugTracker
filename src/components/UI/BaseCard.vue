@@ -1,14 +1,12 @@
 <template>
   <div>
-    <div class="card">
+    <div @click="$emit('openCard')" class="card">
       <div class="title">
         <h4>{{ cardName }}</h4>
       </div>
 
       <div class="description">
-        <span v-if="cardDesc != null || cardDesc != ''">
-        
-        </span>
+        <span v-if="cardDesc != null || cardDesc != ''"> </span>
       </div>
       <div>
         <span>
@@ -19,6 +17,7 @@
   </div>
 </template>
 <script>
+  import BaseDialog from "./BaseDialog.vue";
   export default {
     props: ["cardName", "cardDesc", "cardTags"],
     data() {
@@ -28,9 +27,16 @@
         description: "",
         tagList: [],
         tagged: 0,
+        cardIsOpen: false,
       };
     },
-    methods: {},
+    methods: {
+      openCard() {
+        console.log("card open");
+        this.cardIsOpen = true;
+      },
+    },
+    components: { BaseDialog },
   };
 </script>
 <style scpoed>
@@ -60,6 +66,6 @@
   }
   .description {
     height: 80px;
-    margin-left:90%;
+    margin-left: 90%;
   }
 </style>

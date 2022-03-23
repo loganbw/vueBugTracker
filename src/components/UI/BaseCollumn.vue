@@ -32,7 +32,7 @@
     <div v-for="col in collumns" :id="col" class="contain" draggable="true">
       <div class="title">Title</div>
       <div draggable="true" v-for="card in collumns[col.id].cards" :id="numberOfCards">
-        <base-card :cardName=" card.name" :cardDesc="card.description"></base-card>
+        <base-card :cardName="card.name" :cardDesc="card.description" @openCard="openCard()"></base-card>
       </div>
       <div class="addCard">
         <button class="addCardIcon" @click="addCard(col.id)">
@@ -45,6 +45,9 @@
         <i class="iconStyle fa-regular fa-plus fa-2xl"></i>
       </button>
     </div>
+    <div v-if="cardIsOpen">
+      <base-dialog @close="closeCard()"> </base-dialog>
+    </div>
   </div>
 </template>
 <script>
@@ -56,6 +59,7 @@
       return {
         numberOfCollumns: 0,
         numberOfCards: 0,
+        cardIsOpen: false,
         overflowFlag: false,
         cardModle: false,
         currentCol: 0,
@@ -67,7 +71,7 @@
             cards: [],
           },
         ],
-        
+
         tags: [
           { id: 1, name: "red", description: "" },
           { id: 2, name: "blue", description: "" },
@@ -78,6 +82,12 @@
     props: ["title"],
     components: [BaseCard],
     methods: {
+        openCard(){
+            this.cardIsOpen = true;
+        },
+        closeCard(){
+            this.cardIsOpen = false;
+        },
       closeDialog() {
         this.cardModle = false;
       },
@@ -101,6 +111,7 @@
           name: cardName,
           description: cardDesc,
           tags: [cardTag],
+          dateCreated: new Date()
         });
         this.closeDialog();
       },
