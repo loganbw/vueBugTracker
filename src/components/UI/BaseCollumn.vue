@@ -30,9 +30,23 @@
   </div>
   <div :class="overflowFlag ? 'overflowFlag' : 'colContain'">
     <div v-for="col in collumns" :id="col" class="contain" draggable="true">
-      <div class="title">Title</div>
+      <div @click="changeNameFun" class="title">
+        <div v-if="changeName && col.id == col.id">
+          <form @submit.prevent="onSubmit, closeChangeNameFun" type="submit">
+            <input @input="test($event)" v-model="collumns[col.id].collumnName" />
+          </form>
+        </div>
+        <div v-else>
+          {{ collumns[col.id].collumnName }}
+        </div>
+      </div>
+
       <div draggable="true" v-for="card in collumns[col.id].cards" :id="numberOfCards">
-        <base-card :cardName="card.name" :cardDesc="card.description" @openCard="openCard()"></base-card>
+        <base-card
+          :cardName="card.name"
+          :cardDesc="card.description"
+          @openCard="openCard()"
+        ></base-card>
       </div>
       <div class="addCard">
         <button class="addCardIcon" @click="addCard(col.id)">
@@ -63,6 +77,7 @@
         overflowFlag: false,
         cardModle: false,
         currentCol: 0,
+        changeName: false,
         collumnId: 0,
         collumns: [
           {
@@ -82,12 +97,26 @@
     props: ["title"],
     components: [BaseCard],
     methods: {
-        openCard(){
-            this.cardIsOpen = true;
-        },
-        closeCard(){
-            this.cardIsOpen = false;
-        },
+      test(event) {
+        let t = "";
+        console.log(event);
+        t.concat(event);
+        console.log(t + " this <==");
+      },
+      closeChangeNameFun() {
+        this.changeName = false;
+      },
+      changeNameFun(colId) {
+        console.log("Name div");
+
+        this.changeName = true;
+      },
+      openCard() {
+        this.cardIsOpen = true;
+      },
+      closeCard() {
+        this.cardIsOpen = false;
+      },
       closeDialog() {
         this.cardModle = false;
       },
@@ -111,7 +140,7 @@
           name: cardName,
           description: cardDesc,
           tags: [cardTag],
-          dateCreated: new Date()
+          dateCreated: new Date(),
         });
         this.closeDialog();
       },
