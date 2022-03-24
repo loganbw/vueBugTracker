@@ -5,15 +5,16 @@
         <h4>{{ cardName }}</h4>
       </div>
 
+      <div class="tags">
+        <span v-for="tag in cardTags">
+          {{ cardTags }}
+        </span>
+      </div>
+
       <div class="description">
         <span v-if="cardDesc != undefined"> <i class="fa-solid fa-comment-dots"></i></span>
       </div>
 
-      <div>
-        <span>
-          {{ cardTags }}
-        </span>
-      </div>
     </div>
   </div>
 </template>

@@ -1,3 +1,4 @@
+<!-- Figure out best way to move add collumn button and put it in board view -->
 <template>
   <div v-if="cardModle">
     <div></div>
@@ -11,8 +12,8 @@
           <label id="tag">Tags</label>
           <ul>
             <li v-for="tag in tags">
-              <input v-model="cardTag" id="tag" type="radio" name="tag" :value="tag.name" />
-              <label class="tagLabel" for="red">{{ tag.name }}</label>
+              <input v-model="cardTag" :id="tag" type="checkbox" name="tag" :value="tag.name" />
+              <label class="tagLabel" for="tag">{{ tag.name }}</label>
             </li>
           </ul>
         </div>
@@ -51,6 +52,7 @@
         <base-card
           :cardName="card.name"
           :cardDesc="card.description"
+          :cardTags="card.tags"
           @openCard="openCard()"
         ></base-card>
       </div>
@@ -66,7 +68,32 @@
       </button>
     </div>
     <div v-if="cardIsOpen">
-      <base-dialog @close="closeCard()"> </base-dialog>
+      <base-dialog @close="closeCard()">
+        <form type="submit" @submit.prevent>
+          <div class="cardForm">
+            <label for="name"> Bug Issue</label>
+            <input v-model="cardName" id="title" type="text" />
+            <label for="issue">description</label>
+            <textarea v-model="cardDesc" name="issue" id="issue" cols="30" rows="5"></textarea>
+            <label id="tag">Tags</label>
+            <ul>
+              <li v-for="tag in tags">
+                <input v-model="cardTag" :id="tag" type="checkbox" name="tag" :value="tag.name" />
+                <label class="tagLabel" for="tag">{{ tag.name }}</label>
+              </li>
+            </ul>
+          </div>
+          <div class="spacer"></div>
+          <div class="submitButton">
+            <base-button
+              class="loginButton"
+              value="submit"
+              @click="updateCard(currentCol, numberOfCards, cardName, cardDesc, cardTag)"
+              title="Add Issue"
+            ></base-button>
+          </div>
+        </form>
+      </base-dialog>
     </div>
   </div>
 </template>
@@ -78,7 +105,7 @@
     data() {
       return {
         numberOfCollumns: 0,
-        numberOfCards: 0,
+        numberOfCards: -1,
         cardIsOpen: false,
         overflowFlag: false,
         cardModle: false,
@@ -109,18 +136,14 @@
         console.log(this.$refs.colInput);
         //this.$refs.colInput.$el.focus();
       },
-      test(event) {
-        let t = "";
-      },
       closeChangeNameFun() {
-        console.log("CLOSE");
         this.changeName = false;
       },
       changeNameFun(col) {
         for (let index = 0; index < this.collumns.length; index++) {
           if (index == col.id) {
             this.currentCol = index;
-            this.focusColInput
+            this.focusColInput;
             return (this.changeName = true);
           }
         }
@@ -147,8 +170,9 @@
       logItem(item) {
         console.log(item);
       },
+
       pushCard(colId, cardId, cardName, cardDesc, cardTag) {
-        console.log(this.collumns);
+        
         this.collumns[colId].cards.push({
           id: cardId,
           name: cardName,
@@ -156,7 +180,17 @@
           tags: [cardTag],
           dateCreated: new Date(),
         });
+        console.log(this.collumns[colId].cards[cardId]);
         this.closeDialog();
+      },
+      updateCard(colId, cardId, cardName, cardDesc, cardTag) {
+    
+          (this.collumns[colId].cards[cardId].name = cardName),
+          (this.collumns[colId].cards[cardId].description = cardDesc),
+          (this.collumns[colId].cards[cardId].tags = cardTag),
+          (this.collumns[colId].cards[cardId].dateCreated = "modifiedOn: " + new Date()),
+          console.log(this.collumns[colId])
+        this.closeCard();
       },
     },
     computed: {
@@ -170,10 +204,8 @@
       numberOfCollumns() {
         this.checkCollumns;
       },
-
     },
     components: { BaseCard, BaseButton, BaseDialog },
-    
   };
 </script>
 <style scoped>
