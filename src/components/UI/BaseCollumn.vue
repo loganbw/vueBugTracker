@@ -30,14 +30,19 @@
   </div>
   <div :class="overflowFlag ? 'overflowFlag' : 'colContain'">
     <div v-for="col in collumns" :id="col" class="contain" draggable="true">
-      <div @click="changeNameFun(col)   " class="title">
-        <div v-if="changeName && currentCol == col.id">
-          <form type="submit" @submit.prevent="closeChangeNameFun" >
-            <input :load="focusColInput()"  ref="colInput" @input="test($event)" v-model="collumns[col.id].collumnName" focus />
-            <button style="display: none;" type="submit" value="submit"></button>
+      <div @click="changeNameFun(col), focusColInput()" class="title">
+        <div v-show="changeName && currentCol == col.id">
+          <form type="submit" @submit.prevent="closeChangeNameFun">
+            <input
+              ref="colInput"
+              @input="test($event)"
+              v-model="collumns[col.id].collumnName"
+              focus
+            />
+            <button style="display: none" type="submit" value="submit"></button>
           </form>
         </div>
-        <div v-else>
+        <div v-if="!changeName">
           {{ collumns[col.id].collumnName }}
         </div>
       </div>
@@ -96,32 +101,26 @@
         ],
       };
     },
-    watch:
-    {
-        changeName(){
-            this.focusColInput()
-        }
-    },
+    watch: {},
     props: ["title"],
     components: [BaseCard],
     methods: {
-        focusColInput(){
-            console.log(this.$refs.colInput)
-            
-        },
+      focusColInput() {
+        console.log(this.$refs.colInput);
+        //this.$refs.colInput.$el.focus();
+      },
       test(event) {
         let t = "";
-    
       },
       closeChangeNameFun() {
         console.log("CLOSE");
         this.changeName = false;
       },
       changeNameFun(col) {
-       
         for (let index = 0; index < this.collumns.length; index++) {
           if (index == col.id) {
             this.currentCol = index;
+            this.focusColInput
             return (this.changeName = true);
           }
         }
@@ -171,8 +170,10 @@
       numberOfCollumns() {
         this.checkCollumns;
       },
+
     },
     components: { BaseCard, BaseButton, BaseDialog },
+    
   };
 </script>
 <style scoped>

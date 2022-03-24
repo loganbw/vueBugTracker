@@ -6,8 +6,9 @@
       </div>
 
       <div class="description">
-        <span v-if="cardDesc != null || cardDesc != ''"> </span>
+        <span v-if="cardDesc != undefined"> <i class="fa-solid fa-comment-dots"></i></span>
       </div>
+
       <div>
         <span>
           {{ cardTags }}
