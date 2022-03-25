@@ -29,7 +29,7 @@
           <input id="mail" type="email" />
           <label for="password">Password</label>
           <input type="password" id="password" />
-          <div>
+          <div class="loginButton">
             <BaseButton class="test" title="login" />
           </div>
         </form>
@@ -60,7 +60,7 @@
     border-color: #3d5a80;
   }
   .test {
-    width: 25%;
+    width: 70%;
     display: flex;
     justify-content: center;
   }
@@ -74,5 +74,13 @@
     /* justify-content: space-evenly; */
     /* float: left; */
     flex-direction: column;
+  }
+  .loginButton {
+        display: flex;
+    margin-top: 22%;
+    justify-content: center;
+    align-items: center;
+    width: 55%;
+    margin-left: 54%;
   }
 </style>

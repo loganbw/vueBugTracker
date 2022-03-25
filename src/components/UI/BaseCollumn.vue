@@ -12,7 +12,7 @@
           <label id="tag">Tags</label>
           <ul>
             <li v-for="tag in tags">
-              <input v-model="cardTag" :id="tag" type="checkbox" name="tag" :value="tag.name" />
+              <input v-model="cardTag" :id="tag" type="radio" name="tag" :value="tag.name" />
               <label class="tagLabel" for="tag">{{ tag.name }}</label>
             </li>
           </ul>
@@ -174,6 +174,7 @@
       pushCard(colId, cardId, cardName, cardDesc, cardTag) {
         
         this.collumns[colId].cards.push({
+            listId:'1',
           id: cardId,
           name: cardName,
           description: cardDesc,
@@ -273,8 +274,9 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   }
   .contain {
-    border: 1px dashed grey;
-    height: 35rem;
+    
+    overflow-y:scroll;
+    overflow-x:hidden;
     background: rgba(1, 1, 1, 0.08);
     box-shadow: 0 0 5px #000;
     min-width: 15rem;

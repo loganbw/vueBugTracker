@@ -1,20 +1,20 @@
 <template>
-  <div>
+  <div class="tagAndTitle">
     <div @click="$emit('openCard')" class="card">
-      <div class="title">
-        <h4>{{ cardName }}</h4>
-      </div>
-
       <div class="tags">
         <span v-for="tag in cardTags">
-          {{ cardTags }}
+          <div class="tagBubble" v-if="tag != null">
+            {{ tag }}
+          </div>
         </span>
+      </div>
+      <div class="title">
+        <h4>{{ cardName }}</h4>
       </div>
 
       <div class="description">
         <span v-if="cardDesc != undefined"> <i class="fa-solid fa-comment-dots"></i></span>
       </div>
-
     </div>
   </div>
 </template>
@@ -55,10 +55,15 @@
     flex-direction: column;
     align-items: center;
     overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
   }
   .card:hover {
     transform: scale(1.04);
   }
+
   .title {
     display: flex;
     justify-content: center;
@@ -69,5 +74,17 @@
   .description {
     height: 80px;
     margin-left: 90%;
+  }
+  .tagBubble {
+    width: 100%;
+    background-color: red;
+    height: 60px;
+    /* margin-right: -72%; */
+    border-radius: 20%;
+    /* margin: 2%; */
+    padding-left: -13%;
+    /* margin-bottom: 100%; */
+    margin-left: -148%;
+    /* margin-top: 54%; */
   }
 </style>
