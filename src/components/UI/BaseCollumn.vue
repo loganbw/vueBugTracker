@@ -160,7 +160,8 @@
       addCollumn() {
         this.numberOfCollumns++;
         this.collumns.push({ id: this.numberOfCollumns, cards: [] });
-        console.log(this.collumns);
+        console.log(this.$store.state.count + " this");
+        
       },
       addCard(colId) {
         this.cardModle = true;

@@ -6,8 +6,11 @@ import BaseDialogVue from "./components/UI/BaseDialog.vue";
 import BaseCardVue from "./components/UI/BaseCard.vue";
 import BaseRouterButtonVue from "./components/UI/BaseRouterButton.vue";
 import BaseCollumnVue from "./components/UI/BaseCollumn.vue";
+
+import store from './Vuex.js';
 const app = createApp(App);
 app.use(router);
+app.use(store);
 app.component("base-button", BaseButton);
 app.component("base-dialog", BaseDialogVue);
 app.component("base-card", BaseCardVue);
