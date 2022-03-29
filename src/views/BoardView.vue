@@ -4,6 +4,7 @@
   </div>
   <div></div>
   <div>
+      <BaseSideBar />
     <BaseCollumnVue />
     
   </div>
@@ -19,12 +20,15 @@ import BaseSideBar from "../components/UI/BaseSideBar.vue";
   };
 </script>
 <style scoped>
-  .boardHeader {
+div {
+    display:flex;
+}
+.boardHeader {
     display: flex;
     justify-content: center;
     padding: 1%;
     background-color: rgba(30, 46, 67, 0.8);
     color: rgb(255, 255, 255);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
+
   }
 </style>

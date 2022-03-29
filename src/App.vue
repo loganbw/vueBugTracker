@@ -1,7 +1,9 @@
 <script>
   import MainHeaderVue from "./components/layouts/MainHeader.vue";
   import BaseButton from "./components/UI/BaseButton.vue";
-
+  import BaseSideBarVue from "./components/UI/BaseSideBar.vue";
+import BaseCollumn from "./components/UI/BaseCollumn.vue";
+import BaseSideBar from "./components/UI/BaseSideBar.vue";
   export default {
     data() {
       return {
@@ -15,17 +17,20 @@
       };
     },
     components: {
-      MainHeaderVue,
-    },
+    MainHeaderVue,
+    BaseCollumn,
+    BaseSideBar
+},
   };
 </script>
 
 <template>
   <section>
     <MainHeaderVue title="Website Name" :links="links" linkName="link" />
-    
   </section>
-  <router-view></router-view>
+  <div>
+    <router-view></router-view>
+  </div>
   
 </template>
 

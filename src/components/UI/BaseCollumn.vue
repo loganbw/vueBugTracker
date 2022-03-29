@@ -305,7 +305,7 @@
     display: flex;
     height: 40rem;
     border-radius: 1%;
-
+    width:100%;
     margin: 2%;
   }
   .overflowFlag {
@@ -315,5 +315,6 @@
     box-sizing: content-box;
     height: 40rem;
     margin: 2%;
+    width:100%;
   }
 </style>

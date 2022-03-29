@@ -48,17 +48,14 @@
     justify-content: center;
     margin: 5%;
     padding: 5%;
-    background-color: rgb(255, 254, 246);
+    background-color: rgb(255, 255, 255);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
     transition: all 0.2s ease-in-out;
     display: flex;
     flex-direction: column;
     align-items: center;
     overflow: hidden;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
+    
   }
   .card:hover {
     transform: scale(1.04);
@@ -76,7 +73,7 @@
     margin-left: 90%;
   }
   .tagBubble {
-    width: 100%;
+      width: 100%;
     background-color: red;
     height: 60px;
     /* margin-right: -72%; */
