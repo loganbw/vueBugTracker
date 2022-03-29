@@ -24,7 +24,7 @@ import BaseSideBar from "../components/UI/BaseSideBar.vue";
     justify-content: center;
     padding: 1%;
     background-color: rgba(30, 46, 67, 0.8);
-    color: rgb(240, 235, 217);
+    color: rgb(255, 255, 255);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.8);
   }
 </style>

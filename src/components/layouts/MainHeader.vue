@@ -41,7 +41,7 @@
   }
   a {
     text-decoration: none;
-    color: #f0ebd8;
+    color: #fff;
     margin: 1rem;
   }
   .navMenu {

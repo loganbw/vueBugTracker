@@ -6,10 +6,6 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: "/home",
-      component: LandingView,
-    },
-    {
       path: "/",
       component: HomeViewVue,
     },
@@ -17,6 +13,40 @@ const router = createRouter({
       path: "/board",
       name: "card",
       component: BoardView,
+    },
+    {
+      path:"/teams",
+      component: null,
+      children:[
+        {
+          path:":id",
+          component: null
+        },
+        {
+          path:"member",
+          component: null
+        },
+        {
+          path:"board",
+          component: null
+        },
+        {
+          path:"board/flow/:id",
+          component: null
+        },
+      ]
+    },
+    {
+      path:"/board/:id",
+      component: null
+    },
+    {
+      path:"/register",
+      component: null
+    },
+    {
+      path:"/:notFound(.*)",
+      component: null
     },
   ],
 });
