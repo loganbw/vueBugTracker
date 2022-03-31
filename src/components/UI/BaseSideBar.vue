@@ -2,9 +2,10 @@
   <div>
     <nav>
       <ul>
-        <router-link class="routerLinkText" to=""><li>Teams</li></router-link>
-        <router-link class="routerLinkText" to=""><li>Your Board</li></router-link>
-        <router-link class="routerLinkText" to=""><li>Change Board Flow</li></router-link>
+        <router-link class="routerLinkText" to="/teams"><li>Teams</li></router-link>
+        <router-link class="routerLinkText" to="/board"><li>Your Board</li></router-link>
+        <router-link class="routerLinkText" to="/teams/board/flow"><li>Board Flow</li></router-link>
+        <router-link v-if="admin" class="routerLink" to="teams/members"></router-link>
       </ul>
     </nav>
   </div>
@@ -31,5 +32,8 @@
   }
   .routerLinkText{
       text-decoration: none;
+  }
+  .test{
+      
   }
 </style>

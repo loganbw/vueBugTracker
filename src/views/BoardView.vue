@@ -4,31 +4,32 @@
   </div>
   <div></div>
   <div>
-      <BaseSideBar />
+    <BaseSideBar />
     <BaseCollumnVue />
-    
   </div>
 </template>
 <script>
   import BaseCollumnVue from "../components/UI/BaseCollumn.vue";
-import BaseSideBar from "../components/UI/BaseSideBar.vue";
+  import BaseSideBar from "../components/UI/BaseSideBar.vue";
   export default {
     components: {
-    BaseCollumnVue,
-    BaseSideBar
-},
+      BaseCollumnVue,
+      BaseSideBar,
+    },
   };
 </script>
 <style scoped>
-div {
-    display:flex;
-}
-.boardHeader {
+  div {
     display: flex;
-    justify-content: center;
+  }
+  .boardHeader {
+    display: flex;
+    justify-content: flex-start;
+    height: 60px;
+    align-items: center;
+    height: 50px;
     padding: 1%;
     background-color: rgba(30, 46, 67, 0.8);
     color: rgb(255, 255, 255);
-
   }
 </style>

@@ -63,6 +63,7 @@
 
   .title {
     display: flex;
+    color:#000;
     justify-content: center;
   }
   h4 {

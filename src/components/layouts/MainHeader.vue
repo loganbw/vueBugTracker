@@ -32,6 +32,7 @@
     color: white;
     display: flex;
     place-items: center;
+    height: 50px;
   }
   section {
     float: right;

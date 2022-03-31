@@ -257,6 +257,9 @@
     display: flex;
     justify-content: center;
   }
+  .title{
+    color: #000;
+  }
   .addCardIcon {
     background-color: green;
     margin: 10%;
